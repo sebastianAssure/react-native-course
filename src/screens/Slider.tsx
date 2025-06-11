@@ -1,4 +1,7 @@
-import {Button, StyleSheet, Text, TouchableOpacity, View} from 'react-native';
+import {useEffect, useState} from 'react';
+import {ScrollView, StyleSheet, Text, TouchableOpacity, View} from 'react-native';
+import {getPopularMovies} from '../utils/service/TMDBService';
+import {Movie} from '../interfaces/Movie';
 
 const styles = StyleSheet.create({
   container: {
@@ -7,28 +10,28 @@ const styles = StyleSheet.create({
     paddingHorizontal: 16,
     paddingVertical: 40,
     backgroundColor: 'white',
-    gap: 8
+    gap: 8,
   },
   topNav: {
     flexDirection: 'row',
     gap: 20,
     justifyContent: 'center',
-    paddingVertical: 10
+    paddingVertical: 10,
   },
   centerBox: {
-    flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
     borderWidth: 1,
+    padding: 10
   },
   textCenter: {
-    color: 'black'
+    color: 'black',
   },
   buttonContainer: {
     flexDirection: 'row',
     justifyContent: 'center',
     alignItems: 'center',
-    gap: 10
+    gap: 10,
   },
   button: {
     backgroundColor: 'green',
@@ -43,6 +46,17 @@ const styles = StyleSheet.create({
 });
 
 export const Slider = () => {
+  const [movies, setMovies] = useState<Movie[]>([]);
+
+  useEffect(() => {
+    const fetchMovies = async () => {
+      const data = await getPopularMovies();
+      setMovies(data);
+    };
+
+    fetchMovies();
+  }, []);
+
   return (
     <View style={styles.container}>
       <View style={styles.topNav}>
@@ -50,7 +64,13 @@ export const Slider = () => {
         <Text>Discover</Text>
       </View>
       <View style={styles.centerBox}>
-        <Text style={styles.textCenter}>1</Text>
+        <ScrollView>
+          {movies.map(movie => (
+            <Text key={movie.id} style={styles.textCenter}>
+              {movie.title}
+            </Text>
+          ))}
+        </ScrollView>
       </View>
       <View style={styles.buttonContainer}>
         <TouchableOpacity style={styles.button}>
