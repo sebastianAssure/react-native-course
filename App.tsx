@@ -1,18 +1,18 @@
 import React from 'react';
 import {StyleSheet, Text, View} from 'react-native';
+import Home from './src/screens/Home';
 
 function App(): React.JSX.Element {
   return (
     <View style={styles.sectionContainer}>
-      <Text>Hello React Native 2025</Text>
+      <Home />
     </View>
   );
 }
 
 const styles = StyleSheet.create({
   sectionContainer: {
-    marginTop: 70,
-    paddingHorizontal: 24,
+    flex: 1,
   }
 })
 export default App;
