@@ -1,11 +1,11 @@
 import React from 'react';
-import {StyleSheet, Text, View} from 'react-native';
-import { Slider } from './src/screens/Slider';
+import { StyleSheet, View } from 'react-native';
+import { Home } from './src/screens/Home';
 
 function App(): React.JSX.Element {
   return (
     <View style={styles.sectionContainer}>
-      <Slider />
+      <Home />
     </View>
   );
 }

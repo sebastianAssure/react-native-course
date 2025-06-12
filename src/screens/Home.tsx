@@ -1,21 +1,22 @@
-import { StyleSheet, Text, View } from "react-native";
+import {StyleSheet, View} from 'react-native';
+import { MainCarousel } from '../components/MainCarousel';
+import { Slider } from '../components/Slider';
 
 const styles = StyleSheet.create({
-    container: {
-        marginVertical: 70,
-        paddingHorizontal: 16,
-        paddingVertical: 40,
-        
-        backgroundColor: '#1d49e8',
-    }
+  container: {
+    flexDirection: 'column',
+    backgroundColor: 'black',
+    gap: 20,
+    height: '100%'
+  },
 });
 
-const Home = () => {
-    return (
-        <View style={styles.container}>
-            <Text>Home Component</Text>
-        </View>
-    )
-}
+export const Home = () => {
 
-export default Home;
+  return (
+    <View style={styles.container}>
+        <MainCarousel />
+        <Slider />
+    </View>
+  );
+};
