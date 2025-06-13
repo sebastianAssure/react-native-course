@@ -3,6 +3,7 @@ import {getPopularMovies} from '../utils/service/TMDBService';
 import {IMovie} from '../interfaces/Movie';
 import {View, Text, FlatList, Image} from 'react-native';
 import {IMAGE_BASE_URL} from '@env';
+import {CarouselHeader} from './CarouselHeader';
 
 export const Slider = () => {
   const [movies, setMovies] = useState<IMovie[]>([]);
@@ -16,12 +17,13 @@ export const Slider = () => {
     fetchMovies();
   }, []);
 
+  const handlePress = () => {
+    console.log('See more was clicked!');
+  };
+
   return (
-    <View style={{flexDirection: 'column', gap: 5}}>
-      <View style={{flexDirection: 'row', justifyContent: 'space-between', padding: 5}}>
-        <Text style={{color: 'white', fontSize: 20}}>Marvel studios</Text>
-        <Text style={{color: '#F2C94C', fontSize: 16}}>See more</Text>
-      </View>
+    <View style={{flexDirection: 'column', gap: 5, paddingTop: 15}}>
+      <CarouselHeader text="Marvel studios" colorText="white" onPressed={handlePress} />
       <FlatList
         horizontal
         data={movies}
@@ -41,9 +43,7 @@ export const Slider = () => {
               source={{uri: `${IMAGE_BASE_URL}${item.poster_path}`}}
               style={{width: '100%', height: 220, borderRadius: 12}}
             />
-            <Text style={{color: 'white', paddingTop: 8}}>
-                {item.title}
-            </Text>
+            <Text style={{color: 'white', paddingTop: 8}}>{item.title}</Text>
           </View>
         )}
       />
