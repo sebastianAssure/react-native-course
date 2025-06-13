@@ -1,4 +1,4 @@
-import {FlatList, Image, StyleSheet, Text, View} from 'react-native';
+import { Image, StyleSheet, View} from 'react-native';
 import {MovieProps} from '../interfaces/MovieProps';
 import {IMAGE_BASE_URL} from '@env';
 
