@@ -6,10 +6,10 @@ import Carousel, {
   ICarouselInstance,
   Pagination,
 } from 'react-native-reanimated-carousel';
-import {getPopularMovies} from '../utils/service/TMDBService';
-import {IMovie} from '../interfaces/Movie';
-import {Movie} from './Movie';
-import {ButtonCustom} from './ButtonCustom';
+import { getPopularMovies } from '../utils/service/TMDBService';
+import { IMovie } from '../interfaces/Movie';
+import { Movie } from './Movie';
+import { CustomButton } from './CustomButton';
 
 
 const {width, height} = Dimensions.get('window');
@@ -71,8 +71,8 @@ export const MainCarousel = () => {
             gap: 18,
             paddingTop: 5,
           }}>
-          <ButtonCustom text="+ Wishlist" color="#333333" colorText="white" />
-          <ButtonCustom text="Details" color="#F2C94C" colorText="#333333" />
+          <CustomButton text="+ Wishlist" color="#333333" colorText="white" />
+          <CustomButton text="Details" color="#F2C94C" colorText="#333333" />
         </View>
 
         <Pagination.Basic
