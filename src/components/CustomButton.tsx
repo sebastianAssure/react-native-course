@@ -18,7 +18,8 @@ const styles = StyleSheet.create({
     borderRadius: 8,
   },
   text: {
-    fontWeight: '600',
+    fontWeight: '500',
     fontSize: 18,
+    fontFamily: 'Gilroy-Semibold'
   },
 });

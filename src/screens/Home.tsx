@@ -48,7 +48,7 @@ export const Home = () => {
     return (
       <View style={styles.loadingContainer}>
         <ActivityIndicator size="large" color="#F2C94C" />
-        <Text style={{color: 'white', marginTop: 10}}>Cargando películas...</Text>
+        <Text style={{color: 'white', marginTop: 10, fontFamily: 'Gilroy-Medium'}}>Cargando películas...</Text>
       </View>
     );
   }

@@ -59,5 +59,6 @@ const styles = StyleSheet.create({
   title: {
     color: 'white',
     paddingTop: 8,
+    fontFamily: 'Gilroy-Medium'
   },
 });

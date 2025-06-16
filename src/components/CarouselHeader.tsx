@@ -18,14 +18,17 @@ const styles = StyleSheet.create({
   container: {
     flexDirection: 'row',
     justifyContent: 'space-between',
+    alignItems: 'center',
     padding: 5,
   },
   title: {
     fontWeight: 'bold',
     fontSize: 20,
+    fontFamily: 'Gilroy-SemiBold'
   },
   seeMore: {
     color: '#F2C94C',
     fontSize: 16,
+    fontFamily: 'Gilroy-SemiBold'
   },
 });
