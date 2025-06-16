@@ -3,12 +3,13 @@ import {MovieProps} from '../interfaces/MovieProps';
 import {IMAGE_BASE_URL} from '@env';
 import LinearGradient from 'react-native-linear-gradient';
 import { Colors } from '../constants/colors';
+import { TMDB_IMAGE_SIZES } from '../constants/tmdb';
 
 export const Movie = ({movie}: MovieProps) => {
   return (
     <View style={styles.card}>
       <Image
-        source={{uri: `${IMAGE_BASE_URL}${movie.poster_path}`}}
+        source={{uri: `${IMAGE_BASE_URL}${TMDB_IMAGE_SIZES.ORIGINAL}${movie.poster_path}`}}
         style={styles.poster}
       />
       <LinearGradient
