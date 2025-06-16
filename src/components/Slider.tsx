@@ -40,7 +40,7 @@ const styles = StyleSheet.create({
     gap: 5,
   },
   flatList: {
-    backgroundColor: Colors.background,
+    backgroundColor: Colors.backgroundDark,
     paddingVertical: 10,
   },
   contentContainer: {
@@ -50,7 +50,7 @@ const styles = StyleSheet.create({
   card: {
     width: 160,
     borderRadius: 12,
-    backgroundColor: Colors.background,
+    backgroundColor: Colors.backgroundDark,
     overflow: 'hidden',
   },
   image: {

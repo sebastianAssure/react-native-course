@@ -4,6 +4,7 @@ import {
   ActivityIndicator,
   Text,
   StyleSheet,
+  TouchableOpacity,
 } from 'react-native';
 import {useEffect, useState} from 'react';
 import {IMovie} from '../interfaces/Movie';
@@ -14,7 +15,7 @@ import {
 } from '../utils/service/TMDBService';
 import {MainCarousel} from '../components/MainCarousel';
 import {Slider} from '../components/Slider';
-import { Colors } from '../constants/colors';
+import {Colors} from '../constants/colors';
 
 export const Home = () => {
   const [movies, setMovies] = useState<IMovie[]>([]);
@@ -42,28 +43,25 @@ export const Home = () => {
   if (loading) {
     return (
       <View style={styles.loadingContainer}>
-        <ActivityIndicator size="large" color="#F2C94C" />
-        <Text
-          style={{color: 'white', marginTop: 10, fontFamily: 'Gilroy-Medium'}}>
-          Cargando películas...
-        </Text>
+        <ActivityIndicator size="large" color={Colors.primary} />
+        <Text style={styles.loadingText}>Loading movies...</Text>
       </View>
     );
   }
 
   return (
-    <ScrollView style={{backgroundColor: 'black'}}>
+    <ScrollView style={{backgroundColor: Colors.backgroundDark}}>
       <View style={styles.container}>
         <MainCarousel movies={movies} />
         <View style={{paddingHorizontal: 10}}>
           <Slider
             movies={marvelMovies}
-            categoryName="Marvel Studios"
+            categoryName="Marvel studios"
             showTitle={true}
           />
           <Slider
             movies={ratedMovies}
-            categoryName="Best Movies"
+            categoryName="Best movies"
             showTitle={false}
           />
         </View>
@@ -75,7 +73,7 @@ export const Home = () => {
 const styles = StyleSheet.create({
   container: {
     flexDirection: 'column',
-    backgroundColor: Colors.background,
+    backgroundColor: Colors.backgroundDark,
     gap: 10,
     marginBottom: 40,
     height: '100%',
@@ -84,6 +82,11 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: Colors.background,
+    backgroundColor: Colors.backgroundDark,
+  },
+  loadingText: {
+    color: 'white',
+    marginTop: 10,
+    fontFamily: 'Gilroy-Medium',
   },
 });
