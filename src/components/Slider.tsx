@@ -2,6 +2,8 @@ import { View, Text, FlatList, Image, StyleSheet } from 'react-native';
 import { IMAGE_BASE_URL } from '@env';
 import { CarouselHeader } from './CarouselHeader';
 import { SliderProps } from '../interfaces/SliderProps';
+import { Colors } from '../constants/colors';
+import { TMDB_IMAGE_SIZES } from '../constants/tmdb';
 
 export const Slider = ({ movies, categoryName, showTitle }: SliderProps) => {
   const handlePress = () => {
@@ -21,7 +23,7 @@ export const Slider = ({ movies, categoryName, showTitle }: SliderProps) => {
         renderItem={({ item }) => (
           <View style={styles.card}>
             <Image
-              source={{ uri: `${IMAGE_BASE_URL}${item.poster_path}` }}
+              source={{ uri: `${IMAGE_BASE_URL}${TMDB_IMAGE_SIZES.SMALL}${item.poster_path}` }}
               style={styles.image}
             />
             {showTitle && <Text style={styles.title}>{item.title}</Text>}
@@ -38,7 +40,7 @@ const styles = StyleSheet.create({
     gap: 5,
   },
   flatList: {
-    backgroundColor: 'black',
+    backgroundColor: Colors.backgroundDark,
     paddingVertical: 10,
   },
   contentContainer: {
@@ -48,7 +50,7 @@ const styles = StyleSheet.create({
   card: {
     width: 160,
     borderRadius: 12,
-    backgroundColor: 'black',
+    backgroundColor: Colors.backgroundDark,
     overflow: 'hidden',
   },
   image: {
@@ -59,5 +61,6 @@ const styles = StyleSheet.create({
   title: {
     color: 'white',
     paddingTop: 8,
+    fontFamily: 'Gilroy-Medium'
   },
 });
