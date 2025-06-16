@@ -2,6 +2,7 @@ import { View, Text, FlatList, Image, StyleSheet } from 'react-native';
 import { IMAGE_BASE_URL } from '@env';
 import { CarouselHeader } from './CarouselHeader';
 import { SliderProps } from '../interfaces/SliderProps';
+import { Colors } from '../constants/colors';
 
 export const Slider = ({ movies, categoryName, showTitle }: SliderProps) => {
   const handlePress = () => {
@@ -38,7 +39,7 @@ const styles = StyleSheet.create({
     gap: 5,
   },
   flatList: {
-    backgroundColor: 'black',
+    backgroundColor: Colors.background,
     paddingVertical: 10,
   },
   contentContainer: {
@@ -48,7 +49,7 @@ const styles = StyleSheet.create({
   card: {
     width: 160,
     borderRadius: 12,
-    backgroundColor: 'black',
+    backgroundColor: Colors.background,
     overflow: 'hidden',
   },
   image: {

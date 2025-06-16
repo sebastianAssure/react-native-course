@@ -1,6 +1,8 @@
-import { Image, StyleSheet, View} from 'react-native';
+import {Image, StyleSheet, View} from 'react-native';
 import {MovieProps} from '../interfaces/MovieProps';
 import {IMAGE_BASE_URL} from '@env';
+import LinearGradient from 'react-native-linear-gradient';
+import { Colors } from '../constants/colors';
 
 export const Movie = ({movie}: MovieProps) => {
   return (
@@ -8,6 +10,17 @@ export const Movie = ({movie}: MovieProps) => {
       <Image
         source={{uri: `${IMAGE_BASE_URL}${movie.poster_path}`}}
         style={styles.poster}
+      />
+      <LinearGradient
+        colors={[ 
+          'transparent',
+          Colors.gradientLight,
+          'rgba(0,0,0,0.5)',
+          Colors.gradientDark,
+          'black',
+        ]}
+        locations={[0, 0.25, 0.5, 0.75, 1]}
+        style={styles.gradient}
       />
     </View>
   );
@@ -19,11 +32,18 @@ const styles = StyleSheet.create({
     backgroundColor: 'white',
     overflow: 'hidden',
     alignItems: 'center',
-    elevation: 10
+    elevation: 10,
+    position: 'relative',
   },
   poster: {
     width: '100%',
     height: '100%',
-    objectFit: 'cover'
-  }
+    objectFit: 'cover',
+  },
+  gradient: {
+    position: 'absolute',
+    bottom: 0,
+    width: '100%',
+    height: 200,
+  },
 });

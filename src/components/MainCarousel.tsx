@@ -8,6 +8,7 @@ import Carousel, {
 import { Movie } from './Movie';
 import { CustomButton } from './CustomButton';
 import { MainCarouselProps } from '../interfaces/MainCarouselProps';
+import { Colors } from '../constants/colors';
 
 const { width, height } = Dimensions.get('window');
 
@@ -44,8 +45,8 @@ export const MainCarousel = ({ movies }: MainCarouselProps) => {
         </View>
 
         <View style={styles.buttons}>
-          <CustomButton text="+ Wishlist" color="#333333" colorText="white" />
-          <CustomButton text="Details" color="#F2C94C" colorText="#333333" />
+          <CustomButton text="+  Wishlist" color={Colors.secondary} colorText="white" />
+          <CustomButton text="Details" color={Colors.primary} colorText={Colors.secondary} />
         </View>
 
         <Pagination.Basic
@@ -95,7 +96,7 @@ const styles = StyleSheet.create({
     borderRadius: 50,
   },
   activeDot: {
-    backgroundColor: '#F2C94C',
+    backgroundColor: Colors.primary,
   },
   paginationContainer: {
     gap: 15,
