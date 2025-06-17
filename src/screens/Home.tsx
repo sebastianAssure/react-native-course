@@ -4,7 +4,6 @@ import {
   ActivityIndicator,
   Text,
   StyleSheet,
-  TouchableOpacity,
 } from 'react-native';
 import {useEffect, useState} from 'react';
 import {IMovie} from '../interfaces/Movie';
@@ -17,7 +16,7 @@ import {MainCarousel} from '../components/MainCarousel';
 import {Slider} from '../components/Slider';
 import {Colors} from '../constants/colors';
 
-export const Home = () => {
+export const HomeScreen = () => {
   const [movies, setMovies] = useState<IMovie[]>([]);
   const [marvelMovies, setMarvelMovies] = useState<IMovie[]>([]);
   const [ratedMovies, setRatedMovies] = useState<IMovie[]>([]);
