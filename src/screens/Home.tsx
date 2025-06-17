@@ -4,7 +4,6 @@ import {
   ActivityIndicator,
   Text,
   StyleSheet,
-  TouchableOpacity,
 } from 'react-native';
 import {useEffect, useState} from 'react';
 import {IMovie} from '../interfaces/Movie';

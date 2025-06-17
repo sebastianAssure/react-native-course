@@ -1,13 +1,13 @@
-import { StyleSheet, Text, View } from "react-native"
-import { Colors } from "../constants/colors"
+import {StyleSheet, Text, View} from 'react-native';
+import { Colors } from '../constants/colors';
 
-export const ProfileScreen = () => {
-    return (
-        <View style={styles.container}>
-            <Text style={styles.text}>Profile Screen</Text>
-        </View>
-    )
-}
+export const WishListScreen = () => {
+  return (
+    <View style={styles.container}>
+      <Text style={styles.text}>WishList Screen</Text>
+    </View>
+  );
+};
 
 const styles = StyleSheet.create({
     container: {
