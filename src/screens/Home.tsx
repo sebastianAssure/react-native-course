@@ -5,39 +5,20 @@ import {
   Text,
   StyleSheet,
 } from 'react-native';
-import {useEffect, useState} from 'react';
-import {IMovie} from '../interfaces/Movie';
-import {
-  getMarvelMovies,
-  getPopularMovies,
-  getTopRateMovies,
-} from '../utils/service/TMDBService';
-import {MainCarousel} from '../components/MainCarousel';
-import {Slider} from '../components/Slider';
-import {Colors} from '../constants/colors';
+import { MainCarousel } from '../components/MainCarousel';
+import { Slider } from '../components/Slider';
+import { Colors } from '../constants/colors';
+import { useTMDB } from '../hooks/useTMDB';
+import { params } from '../utils/params';
 
 export const HomeScreen = () => {
-  const [movies, setMovies] = useState<IMovie[]>([]);
-  const [marvelMovies, setMarvelMovies] = useState<IMovie[]>([]);
-  const [ratedMovies, setRatedMovies] = useState<IMovie[]>([]);
-  const [loading, setLoading] = useState(true);
+  const { movies: popularMovies, loading: loadingPopular } = useTMDB('/movie/popular', params.popular);
+  const { movies: ratedMovies, loading: loadingRated } = useTMDB('/movie/top_rated', params.topRated);
+  const { movies: marvelMovies, loading: loadingMarvel } = useTMDB('/discover/movie', params.marvel);
 
-  useEffect(() => {
-    const fetchAllMovies = async () => {
-      const [popular, marvel, topRated] = await Promise.all([
-        getPopularMovies(),
-        getMarvelMovies(),
-        getTopRateMovies(),
-      ]);
+  const loading = loadingMarvel || loadingPopular || loadingRated;
 
-      setMovies(popular.slice(9, 14));
-      setMarvelMovies(marvel);
-      setRatedMovies(topRated);
-      setLoading(false);
-    };
-
-    fetchAllMovies();
-  }, []);
+  const topFivePopularMovies = popularMovies.slice(0, 5);
 
   if (loading) {
     return (
@@ -51,7 +32,7 @@ export const HomeScreen = () => {
   return (
     <ScrollView style={{backgroundColor: Colors.backgroundDark}}>
       <View style={styles.container}>
-        <MainCarousel movies={movies} />
+        <MainCarousel movies={topFivePopularMovies} />
         <View style={{paddingHorizontal: 10}}>
           <Slider
             movies={marvelMovies}
