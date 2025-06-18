@@ -1,7 +1,7 @@
 import { View, Text, FlatList, Image, StyleSheet } from 'react-native';
 import { IMAGE_BASE_URL } from '@env';
 import { CarouselHeader } from './CarouselHeader';
-import { SliderProps } from '../interfaces/SliderProps';
+import { SliderProps } from '../interfaces/types/SliderProps';
 import { Colors } from '../constants/colors';
 import { TMDB_IMAGE_SIZES } from '../constants/tmdb';
 

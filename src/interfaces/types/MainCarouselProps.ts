@@ -1,4 +1,5 @@
-import { IMovie } from "./Movie";
+import { IMovie } from "../Movie";
+
 
 export type MainCarouselProps = {
     movies: IMovie[];

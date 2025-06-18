@@ -1,21 +1,21 @@
 import * as React from 'react';
-import {Dimensions, Text, View, StyleSheet} from 'react-native';
-import {useSharedValue} from 'react-native-reanimated';
+import { Dimensions, Text, View, StyleSheet } from 'react-native';
+import { useSharedValue } from 'react-native-reanimated';
 import Carousel, {
   ICarouselInstance,
   Pagination,
 } from 'react-native-reanimated-carousel';
-import {Movie} from './Movie';
-import {CustomButton} from './CustomButton';
-import {MainCarouselProps} from '../interfaces/MainCarouselProps';
-import {Colors} from '../constants/colors';
-import {useState} from 'react';
-import {IMovie} from '../interfaces/Movie';
-import {BottomModal} from './BottomModal';
+import { Movie } from './Movie';
+import { CustomButton } from './CustomButton';
+import { MainCarouselProps } from '../interfaces/types/MainCarouselProps';
+import { Colors } from '../constants/colors';
+import { useState } from 'react';
+import { IMovie } from '../interfaces/Movie';
+import { BottomModal } from './BottomModal';
 
-const {width, height} = Dimensions.get('window');
+const { width, height } = Dimensions.get('window');
 
-export const MainCarousel = ({movies}: MainCarouselProps) => {
+export const MainCarousel = ({ movies }: MainCarouselProps) => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [selectedMovie, setSelectedMovie] = useState<IMovie>();
   const [modalVisible, setModalVisible] = useState<boolean>(false);
@@ -46,7 +46,7 @@ export const MainCarousel = ({movies}: MainCarouselProps) => {
           autoPlay
           scrollAnimationDuration={700}
           autoPlayInterval={3000}
-          renderItem={({index}) => <Movie movie={movies[index]} />}
+          renderItem={({ index }) => <Movie movie={movies[index]} />}
         />
 
         <View style={styles.overlay}>
@@ -59,12 +59,12 @@ export const MainCarousel = ({movies}: MainCarouselProps) => {
             <CustomButton
               text="+  Wishlist"
               color={Colors.secondary}
-              colorText="white"
+              textColor="white"
             />
             <CustomButton
               text="Details"
               color={Colors.primary}
-              colorText={Colors.secondary}
+              textColor={Colors.secondary}
               onPressed={() => {
                 setSelectedMovie(movies[currentIndex]);
                 setModalVisible(true);
@@ -88,12 +88,9 @@ export const MainCarousel = ({movies}: MainCarouselProps) => {
         {selectedMovie && (
           <View style={styles.modalContent}>
             <Text style={styles.modalTitle}>{selectedMovie.title}</Text>
-
             <Text style={styles.modalDate}>
-              Release date:{' '}
-              {new Date(selectedMovie.release_date).toLocaleDateString()}
+              {`Release date: ${selectedMovie.release_date}`}
             </Text>
-
             <Text style={styles.modalOverview}>{selectedMovie.overview}</Text>
           </View>
         )}
@@ -132,6 +129,8 @@ const styles = StyleSheet.create({
     paddingTop: 5,
   },
   dot: {
+    width: 9,
+    height: 9 ,
     backgroundColor: 'white',
     borderRadius: 50,
   },
