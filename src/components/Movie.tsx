@@ -1,5 +1,5 @@
 import {Image, StyleSheet, View} from 'react-native';
-import {MovieProps} from '../interfaces/MovieProps';
+import {MovieProps} from '../interfaces/types/MovieProps';
 import {IMAGE_BASE_URL} from '@env';
 import LinearGradient from 'react-native-linear-gradient';
 import { Colors } from '../constants/colors';

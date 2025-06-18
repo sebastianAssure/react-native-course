@@ -7,7 +7,7 @@ import {
   Dimensions,
 } from 'react-native';
 import { Colors } from '../constants/colors';
-import { BottomModalProps } from '../interfaces/BottomModalProps';
+import { BottomModalProps } from '../interfaces/types/BottomModalProps';
 
 const { height } = Dimensions.get('window');
 

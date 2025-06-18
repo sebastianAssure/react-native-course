@@ -1,5 +1,5 @@
 import { Pressable, Text, View, StyleSheet } from 'react-native';
-import { CarouselHeaderProps } from '../interfaces/CarouselHeaderProps';
+import { CarouselHeaderProps } from '../interfaces/types/CarouselHeaderProps';
 import { Colors } from '../constants/colors';
 
 export const CarouselHeader = ({ text, colorText, onPressed }: CarouselHeaderProps) => {
