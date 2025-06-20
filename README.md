@@ -1,97 +1,155 @@
-This is a new [**React Native**](https://reactnative.dev) project, bootstrapped using [`@react-native-community/cli`](https://github.com/react-native-community/cli).
+<p align="center">
+  <img src="images/assuresoft.png" alt="Assure Logos" title="Assure Logo" width="500" />
+</p>
 
-# Getting Started
+---
 
-> **Note**: Make sure you have completed the [Set Up Your Environment](https://reactnative.dev/docs/set-up-your-environment) guide before proceeding.
+# React Native Course App (Movie App)
 
-## Step 1: Start Metro
+A React Native application for learn in the module mobile development.
 
-First, you will need to run **Metro**, the JavaScript build tool for React Native.
+---
 
-To start the Metro dev server, run the following command from the root of your React Native project:
+## Table of Contents
 
-```sh
-# Using npm
-npm start
+1. [About the Project](#about-the-project)
+2. [Built With](#built-with)
+3. [Getting Started](#getting-started)
+   - [Prerequisites](#prerequisites)
+   - [Installation](#installation)
+4. [Usage](#usage)
+   - [Env](#env)
+   - [Running the App](#running-the-app)
+5. [Folder Structure](#folder-structure)
+6. [Scripts & Commands](#scripts--commands)
+7. [ScreenShots app](#screenshots-app)
+   - [Figma MockUp](#figma-mockup)
+   - [ScreenShots](#screenshots)
 
-# OR using Yarn
-yarn start
+---
+
+## About the Project
+
+A practical React Native iOS application covering:
+- Core components (`View`, `Text`, `FlatList`, `Reanimated-Carousel`, etc.)
+- Component styling with `StyleSheet`
+- Navigation using React Navigation
+- Hooks and functional components
+- Interactive UI (`Pressable`, images, carousel)
+
+---
+
+## Built With
+
+- [React Native](https://reactnative.dev/)
+- [React Navigation](https://reactnavigation.org/) (Tab, NavigationContainer)
+- TypeScript
+
+---
+
+## Getting Started
+
+### Prerequisites
+
+Ensure you have:
+- **Node.js** ≥ 18.x (or LTS)
+- **npm** or **yarn**
+- **CocoaPods** (`sudo gem install cocoapods`)
+
+---
+
+## Installation
+
+Clone the project:
+```bash
+git clone https://github.com/sebastianAssure/react-native-course.git
 ```
 
-## Step 2: Build and run your app
-
-With Metro running, open a new terminal window/pane from the root of your React Native project, and use one of the following commands to build and run your Android or iOS app:
-
-### Android
-
-```sh
-# Using npm
-npm run android
-
-# OR using Yarn
-yarn android
+Go to the project directory:
+```bash
+cd react-native-course
 ```
 
-### iOS
-
-For iOS, remember to install CocoaPods dependencies (this only needs to be run on first clone or after updating native deps).
-
-The first time you create a new project, run the Ruby bundler to install CocoaPods itself:
-
-```sh
-bundle install
+Install JS dependencies:
+```bash
+npm install  # or yarn install
 ```
 
-Then, and every time you update your native dependencies, run:
-
-```sh
-bundle exec pod install
+Install iOS native:
+```bash
+cd ios && pod install && cd ..
 ```
 
-For more information, please visit [CocoaPods Getting Started guide](https://guides.cocoapods.org/using/getting-started.html).
+---
 
-```sh
-# Using npm
-npm run ios
+## Usage
 
-# OR using Yarn
-yarn ios
+### Env
+
+Create a new file `.env` in the root of your app:
+
+```bash
+TMDB_ACCESS_TOKEN=
+TMDB_API_KEY=
+TMDB_BASE_URL=
+IMAGE_BASE_URL=
 ```
 
-If everything is set up correctly, you should see your new app running in the Android Emulator, iOS Simulator, or your connected device.
+### Running the App
 
-This is one way to run your app — you can also build it directly from Android Studio or Xcode.
+```bash
+npx react-native run-ios
+```
 
-## Step 3: Modify your app
+---
 
-Now that you have successfully run the app, let's make changes!
+## Folder Structure
 
-Open `App.tsx` in your text editor of choice and make some changes. When you save, your app will automatically update and reflect these changes — this is powered by [Fast Refresh](https://reactnative.dev/docs/fast-refresh).
+```bash
+react-native-course/
+├── ios/                   # iOS native project
+├── android/               # Android native project
+├── src/                   # App source code
+│   ├── components/        # Reusable UI components
+│   ├── constants/         # Global constants (colors, imageSizes)
+│   ├── interfaces/        # Interfaces and types (TypeScript or Props)
+│   ├── navigation/        # Navigation configuration
+│   ├── screens/           # App screens/views
+│   ├── hooks/             # Custom React hooks
+│   ├── utils/             # Utility/helper functions
+│   └── App.js             # App entry point
+├── .eslintrc.js           # ESLint configuration
+├── .prettierrc            # Prettier configuration
+├── package.json
+└── README.md
+```
 
-When you want to forcefully reload, for example to reset the state of your app, you can perform a full reload:
+---
 
-- **Android**: Press the <kbd>R</kbd> key twice or select **"Reload"** from the **Dev Menu**, accessed via <kbd>Ctrl</kbd> + <kbd>M</kbd> (Windows/Linux) or <kbd>Cmd ⌘</kbd> + <kbd>M</kbd> (macOS).
-- **iOS**: Press <kbd>R</kbd> in iOS Simulator.
+## Scripts & Commands
 
-## Congratulations! :tada:
 
-You've successfully run and modified your React Native App. :partying_face:
+| Command              | Description                                                   |
+|----------------------|---------------------------------------------------------------|
+| `npm start`          | Starts the React Native bundler (Metro)                       |
+| `npm run ios`        | Runs the app in an iOS simulator                              |
+| `npm run android`    | Runs the app on an Android emulator or device                 |
+| `npm run clean`      | Resets the bundler cache and restarts it                      |
+| `npm run lint`       | Runs ESLint to analyze code quality                           |
+| `npm test`           | Runs tests using Jest                                       |
 
-### Now what?
+---
 
-- If you want to add this new React Native code to an existing application, check out the [Integration guide](https://reactnative.dev/docs/integration-with-existing-apps).
-- If you're curious to learn more about React Native, check out the [docs](https://reactnative.dev/docs/getting-started).
+## ScreenShots App
 
-# Troubleshooting
+### Figma MockUp
 
-If you're having issues getting the above steps to work, see the [Troubleshooting](https://reactnative.dev/docs/troubleshooting) page.
+```bash
+https://www.figma.com/community/file/1126286295256197533
+```
 
-# Learn More
+### ScreenShots
 
-To learn more about React Native, take a look at the following resources:
-
-- [React Native Website](https://reactnative.dev) - learn more about React Native.
-- [Getting Started](https://reactnative.dev/docs/environment-setup) - an **overview** of React Native and how setup your environment.
-- [Learn the Basics](https://reactnative.dev/docs/getting-started) - a **guided tour** of the React Native **basics**.
-- [Blog](https://reactnative.dev/blog) - read the latest official React Native **Blog** posts.
-- [`@facebook/react-native`](https://github.com/facebook/react-native) - the Open Source; GitHub **repository** for React Native.
+<p align="center">
+  <img src="images/movieApp.jpg" alt="Mobile Apps" title="Mobile Apps" width="700" />
+</p>
