@@ -151,5 +151,5 @@ https://www.figma.com/community/file/1126286295256197533
 ### ScreenShots
 
 <p align="center">
-  <img src="images/movieApp.jpg" alt="Mobile Apps" title="Mobile Apps" width="700" />
+  <img src="images/movieApp.png" alt="Mobile Apps" title="Mobile Apps" width="700" />
 </p>
