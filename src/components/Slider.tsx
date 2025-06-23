@@ -4,15 +4,38 @@ import { CarouselHeader } from './CarouselHeader';
 import { SliderProps } from '../interfaces/types/SliderProps';
 import { Colors } from '../constants/colors';
 import { TMDB_IMAGE_SIZES } from '../constants/tmdb';
+import { useNavigation } from '@react-navigation/native';
+import { NativeStackNavigationProp } from '@react-navigation/native-stack';
+import { RootStackParamList } from '../interfaces/types/RootStackParamList';
+import { categoryConfigMap } from '../utils/categoryConfigMap';
+
+type NavigationProp = NativeStackNavigationProp<RootStackParamList, 'SeeMore'>;
 
 export const Slider = ({ movies, categoryName, showTitle }: SliderProps) => {
+  const navigation = useNavigation<NavigationProp>();
+
   const handlePress = () => {
-    console.log('See more was clicked!');
+    const { endpoint, param } = categoryConfigMap[categoryName];
+
+    if (!endpoint) {
+      console.warn(`No endpoint configured for category: ${categoryName}`);
+      return;
+    }
+
+    navigation.navigate('SeeMore', {
+      endpoint,
+      title: categoryName,
+      param: param
+    });
   };
 
   return (
     <View style={styles.container}>
-      <CarouselHeader text={categoryName} colorText="white" onPressed={handlePress} />
+      <CarouselHeader
+        text={categoryName}
+        colorText="white"
+        onPressed={handlePress}
+      />
       <FlatList
         horizontal
         data={movies}
@@ -23,7 +46,9 @@ export const Slider = ({ movies, categoryName, showTitle }: SliderProps) => {
         renderItem={({ item }) => (
           <View style={styles.card}>
             <Image
-              source={{ uri: `${IMAGE_BASE_URL}${TMDB_IMAGE_SIZES.SMALL}${item.poster_path}` }}
+              source={{
+                uri: `${IMAGE_BASE_URL}${TMDB_IMAGE_SIZES.SMALL}${item.poster_path}`,
+              }}  
               style={styles.image}
             />
             {showTitle && <Text style={styles.title}>{item.title}</Text>}
@@ -61,6 +86,6 @@ const styles = StyleSheet.create({
   title: {
     color: 'white',
     paddingTop: 8,
-    fontFamily: 'Gilroy-Medium'
+    fontFamily: 'Gilroy-Medium',
   },
 });

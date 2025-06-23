@@ -19,6 +19,8 @@ export const HomeScreen = () => {
   const loading = loadingMarvel || loadingPopular || loadingRated;
 
   const topFivePopularMovies = popularMovies.slice(0, 5);
+  const topFiveRatedMovies = ratedMovies.slice(0, 5);
+  const topFiveMarvelMovies = marvelMovies.slice(0, 5);
 
   if (loading) {
     return (
@@ -35,12 +37,12 @@ export const HomeScreen = () => {
         <MainCarousel movies={topFivePopularMovies} />
         <View style={{paddingHorizontal: 10}}>
           <Slider
-            movies={marvelMovies}
+            movies={topFiveMarvelMovies}
             categoryName="Marvel studios"
             showTitle={true}
           />
           <Slider
-            movies={ratedMovies}
+            movies={topFiveRatedMovies}
             categoryName="Best movies"
             showTitle={false}
           />
