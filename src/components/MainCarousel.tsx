@@ -8,10 +8,11 @@ import Carousel, {
 import { Movie } from './Movie';
 import { CustomButton } from './CustomButton';
 import { MainCarouselProps } from '../interfaces/types/MainCarouselProps';
-import { Colors } from '../constants/colors';
 import { useState } from 'react';
 import { IMovie } from '../interfaces/Movie';
 import { BottomModal } from './BottomModal';
+import { useThemedStyles } from '../hooks/useThemedStyles';
+import { ThemeColors } from '../../types/ThemeColors';
 
 const { width, height } = Dimensions.get('window');
 
@@ -21,6 +22,8 @@ export const MainCarousel = ({ movies }: MainCarouselProps) => {
   const [modalVisible, setModalVisible] = useState<boolean>(false);
   const ref = React.useRef<ICarouselInstance>(null);
   const progress = useSharedValue<number>(0);
+  const { colors } = useThemedStyles();
+  const styles = getStyles(colors);
 
   const onPressPagination = (index: number) => {
     ref.current?.scrollTo({
@@ -58,13 +61,13 @@ export const MainCarousel = ({ movies }: MainCarouselProps) => {
           <View style={styles.buttons}>
             <CustomButton
               text="+  Wishlist"
-              color={Colors.secondary}
+              color={colors.secondary}
               textColor="white"
             />
             <CustomButton
               text="Details"
-              color={Colors.primary}
-              textColor={Colors.secondary}
+              color={colors.primary}
+              textColor={colors.secondary}
               onPressed={() => {
                 setSelectedMovie(movies[currentIndex]);
                 setModalVisible(true);
@@ -99,69 +102,68 @@ export const MainCarousel = ({ movies }: MainCarouselProps) => {
   );
 };
 
-const styles = StyleSheet.create({
-  container: {
-    height: height * 0.5,
-    marginBottom: 20,
-  },
-  overlay: {
-    position: 'absolute',
-    top: height * 0.37,
-    width: '100%',
-    paddingHorizontal: 20,
-    gap: 20,
-  },
-  menu: {
-    flexDirection: 'row',
-    justifyContent: 'center',
-    gap: 20,
-  },
-  menuText: {
-    color: 'white',
-    fontSize: 18,
-    fontWeight: 'bold',
-    fontFamily: 'Gilroy-Medium',
-  },
-  buttons: {
-    flexDirection: 'row',
-    justifyContent: 'center',
-    gap: 18,
-    paddingTop: 5,
-  },
-  dot: {
-    width: 9,
-    height: 9 ,
-    backgroundColor: 'white',
-    borderRadius: 50,
-  },
-  activeDot: {
-    backgroundColor: Colors.primary,
-  },
-  paginationContainer: {
-    gap: 15,
-    marginTop: 2,
-  },
-  modalContent: {
-    padding: 20,
-    borderRadius: 12,
-  },
-  modalTitle: {
-    fontSize: 24,
-    fontWeight: 'bold',
-    color: Colors.secondary,
-    fontFamily: 'Gilroy-SemiBold',
-    marginBottom: 8,
-  },
-  modalDate: {
-    fontSize: 14,
-    color: Colors.secondary,
-    fontFamily: 'Gilroy-Regular',
-    marginBottom: 16,
-  },
-  modalOverview: {
-    fontSize: 16,
-    color: Colors.textBlack,
-    fontFamily: 'Gilroy-Regular',
-    lineHeight: 22,
-  },
-});
+const getStyles = (colors: ThemeColors) =>
+  StyleSheet.create({
+    container: {
+      height: height * 0.5,
+      marginBottom: 20,
+    },
+    overlay: {
+      position: 'absolute',
+      top: height * 0.37,
+      width: '100%',
+      paddingHorizontal: 20,
+      gap: 20,
+    },
+    menu: {
+      flexDirection: 'row',
+      justifyContent: 'center',
+      gap: 20,
+    },
+    menuText: {
+      color: 'white',
+      fontSize: 18,
+      fontFamily: 'Gilroy-Medium',
+    },
+    buttons: {
+      flexDirection: 'row',
+      justifyContent: 'center',
+      gap: 18,
+      paddingTop: 5,
+    },
+    dot: {
+      width: 9,
+      height: 9,
+      backgroundColor: colors.border,
+      borderRadius: 50,
+    },
+    activeDot: {
+      backgroundColor: colors.primary,
+    },
+    paginationContainer: {
+      gap: 15,
+      marginTop: 2,
+    },
+    modalContent: {
+      padding: 20,
+      borderRadius: 12,
+    },
+    modalTitle: {
+      fontSize: 24,
+      color: colors.secondary,
+      fontFamily: 'Gilroy-SemiBold',
+      marginBottom: 8,
+    },
+    modalDate: {
+      fontSize: 14,
+      color: colors.secondary,
+      fontFamily: 'Gilroy-Regular',
+      marginBottom: 16,
+    },
+    modalOverview: {
+      fontSize: 16,
+      color: colors.secondary,
+      fontFamily: 'Gilroy-Regular',
+      lineHeight: 22,
+    },
+  });

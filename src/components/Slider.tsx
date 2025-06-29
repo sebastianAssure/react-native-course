@@ -8,11 +8,16 @@ import { useNavigation } from '@react-navigation/native';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { RootStackParamList } from '../interfaces/types/RootStackParamList';
 import { categoryConfigMap } from '../utils/categoryConfigMap';
+import MovieCard from './MovieCard';
+import { ThemeColors } from '../../types/ThemeColors';
+import { useThemedStyles } from '../hooks/useThemedStyles';
 
 type NavigationProp = NativeStackNavigationProp<RootStackParamList, 'SeeMore'>;
 
 export const Slider = ({ movies, categoryName, showTitle }: SliderProps) => {
   const navigation = useNavigation<NavigationProp>();
+  const { colors } = useThemedStyles();
+  const styles = getStyles(colors);
 
   const handlePress = () => {
     const { endpoint, param } = categoryConfigMap[categoryName];
@@ -44,48 +49,45 @@ export const Slider = ({ movies, categoryName, showTitle }: SliderProps) => {
         showsHorizontalScrollIndicator={false}
         contentContainerStyle={styles.contentContainer}
         renderItem={({ item }) => (
-          <View style={styles.card}>
-            <Image
-              source={{
-                uri: `${IMAGE_BASE_URL}${TMDB_IMAGE_SIZES.SMALL}${item.poster_path}`,
-              }}  
-              style={styles.image}
-            />
-            {showTitle && <Text style={styles.title}>{item.title}</Text>}
-          </View>
+          <MovieCard
+            movie={item}
+            showTitle={true}
+            isWishListScreen={false}
+          />
         )}
       />
     </View>
   );
 };
 
-const styles = StyleSheet.create({
-  container: {
-    flexDirection: 'column',
-    gap: 5,
-  },
-  flatList: {
-    backgroundColor: Colors.backgroundDark,
-    paddingVertical: 10,
-  },
-  contentContainer: {
-    gap: 16,
-    paddingHorizontal: 4,
-  },
-  card: {
-    width: 160,
-    borderRadius: 12,
-    backgroundColor: Colors.backgroundDark,
-    overflow: 'hidden',
-  },
-  image: {
-    width: '100%',
-    height: 220,
-    borderRadius: 12,
-  },
-  title: {
-    color: 'white',
-    paddingTop: 8,
-    fontFamily: 'Gilroy-Medium',
-  },
-});
+const getStyles = (colors: ThemeColors) =>
+  StyleSheet.create({
+    container: {
+      flexDirection: 'column',
+      gap: 5,
+    },
+    flatList: {
+      backgroundColor: colors.background,
+      paddingVertical: 10,
+    },
+    contentContainer: {
+      gap: 16,
+      paddingHorizontal: 4,
+    },
+    card: {
+      width: 160,
+      borderRadius: 12,
+      backgroundColor: colors.background,
+      overflow: 'hidden',
+    },
+    image: {
+      width: '100%',
+      height: 220,
+      borderRadius: 12,
+    },
+    title: {
+      color: colors.text,
+      paddingTop: 8,
+      fontFamily: 'Gilroy-Medium',
+    },
+  });

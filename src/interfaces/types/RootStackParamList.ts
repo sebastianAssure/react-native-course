@@ -5,4 +5,7 @@ export type RootStackParamList = {
     title?: string;
     param: object;
   };
+    MovieDetail: {
+    id: number;
+  };
 };
