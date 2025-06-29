@@ -10,7 +10,7 @@ export const CarouselHeader = ({ text, colorText, onPressed }: CarouselHeaderPro
 
   return (
     <View style={styles.container}>
-      <Text style={[styles.title, { color: colors.primary }]}>{text}</Text>
+      <Text style={[styles.title, { color: colors.text }]}>{text}</Text>
       <Pressable onPress={onPressed}>
         <Text style={styles.seeMore}>See more</Text>
       </Pressable>

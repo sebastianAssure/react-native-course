@@ -26,6 +26,7 @@ A React Native application for learn in the module mobile development.
    - [Figma MockUp](#figma-mockup)
    - [ScreenShots](#screenshots)
    - [Link to download file aab](#link-to-download-file-aab)
+   - [Link to download apk](#link-to-download-apk)
 
 ---
 
@@ -159,4 +160,10 @@ https://www.figma.com/community/file/1126286295256197533
 
 ```bash
 https://drive.google.com/file/d/1LqotD5VJd9RtusrRwQ5RYPiVGeLV1zso/view?usp=sharing
+```
+
+### Link to download apk
+
+```bash
+https://drive.google.com/file/d/1-GUNVlAsW9qN6qLSd77UiwxZCnmDhx1E/view?usp=sharing
 ```
